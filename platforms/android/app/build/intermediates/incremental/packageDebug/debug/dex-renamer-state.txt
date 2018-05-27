@@ -1,0 +1,4 @@
+#Sat May 26 12:32:16 WIB 2018
+base.0=/home/satunol/IONIC/project/blok_personal/platforms/android/app/build/intermediates/transforms/dexMerger/debug/0
+renamed.0=classes.dex
+file.0=/home/satunol/IONIC/project/blok_personal/platforms/android/app/build/intermediates/transforms/dexMerger/debug/0/classes.dex

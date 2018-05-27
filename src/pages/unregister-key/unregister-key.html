@@ -1,0 +1,19 @@
+<page-alert (alertResult)="alertResult($event)" #alert></page-alert>
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Unregister key</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <button ion-item (click)="showAlert()">
+      <ion-avatar item-start class="avatarIcon">
+        <ion-icon name="lock-circle" class="listIcon" color="primary"></ion-icon>
+      </ion-avatar>
+      <h2>blok_01</h2>
+      <p style="font-size:12px;">JK:9L:O9:KJ</p>
+      <ion-icon style="color:gray;font-size:35px;" name="lock-signal" item-end></ion-icon>
+    </button>
+  </ion-list>
+</ion-content>

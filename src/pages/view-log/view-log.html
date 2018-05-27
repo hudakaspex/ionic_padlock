@@ -1,0 +1,30 @@
+<ion-content>
+    <ion-list>
+        <ion-item style="border-bottom:1px solid rgb(248, 248, 248);" no-lines text-center>
+            <button [disabled]="list.length==0" item-start clear ion-button (click)="setDate()">
+              <ion-icon name="calendar" style="font-size:28px;"></ion-icon>
+            </button>
+            <ion-input disabled="true" placeholder="Search with date" [value]="date"></ion-input>
+            <button [disabled]="list.length==0" item-end clear ion-button (click)="resetDate()">
+              <ion-icon name="close" style="font-size:16px;"></ion-icon>
+            </button>
+          </ion-item>
+        <ion-list-header>History</ion-list-header>
+    </ion-list>
+    <ion-scroll style="width:100%;height:65vh" scrollY="true">
+        <ion-list scroll="true">
+            <div *ngIf="list.length != 0">
+                <ion-item *ngFor="let i of list">
+                    <ion-icon item-start name="lock-pin-circle" style="font-size:50px;" color="primary"></ion-icon>
+                    <h2>Padlock2B14</h2>
+                    <p style="font-size:12px;">3b:45:dd:89:s9:8i</p>
+                    <ion-note item-end style="font-size:12px;">23-03-2018</ion-note>
+                </ion-item>
+            </div>
+        </ion-list>
+    </ion-scroll>
+    <div class="txtCenter" *ngIf="list.length==0">
+        <ion-icon name="ios-list-outline" style="font-size:68px;"></ion-icon>
+        <p style="font-size:15px;">No available history</p>
+    </div>
+</ion-content>

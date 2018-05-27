@@ -1,0 +1,30 @@
+<page-alert #alert></page-alert>
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-buttons left>
+      <button ion-button icon-only (click)="backPage()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>Change Pin</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="form">
+    <ion-list>
+      <span *ngFor="let i of contentPage">
+        <ion-item>
+          <ion-label floating>{{i.placeholder}}</ion-label>
+          <ion-input [formControlName]="i.name" maxlength="32" type="password"></ion-input>
+        </ion-item>
+        <div class="errorMessage">
+          <small *ngIf="form.get(i.name).hasError('required') && form.controls[i.name].touched">*{{i.errorMessage}} is required</small>
+          <small *ngIf="form.get(i.name).hasError('minlength') && !form.get(i.name).hasError('required') && form.controls[i.name].touched">* you must provide 6 characters for {{i.errorMessage}}</small>
+          <small *ngIf="form.get(i.name).hasError('equalTo') && !form.get(i.name).hasError('required') &&( form.controls[i.name].touched ||  form.controls[i.name].dirty)">* mismatch key</small>
+        </div>
+      </span>
+    </ion-list>
+  <button padding ion-button full [disabled]="!form.valid" (click)="closeModal(form.value)">Save</button>
+  </form>
+</ion-content>

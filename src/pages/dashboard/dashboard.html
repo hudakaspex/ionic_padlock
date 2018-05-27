@@ -1,0 +1,42 @@
+<page-alert #alert></page-alert>
+<ion-content padding>
+  <ion-list>
+    <ion-grid>
+      <ion-row text-center>
+        <ion-col width-33></ion-col>
+        <ion-col width-33>
+          <ion-card class="gauge-card">
+            <div class="progress-wraper">
+              <div class="progress">{{current}}%
+                <p>Power</p>
+              </div>
+              <round-progress [current]="current" [max]="max" [color]="gaugeColor" [background]="'#eaeaea'" [radius]="112" [stroke]="6"
+                [semicircle]="false" [clockwise]="true" [responsive]="false" [duration]="900" [animation]="'linearEase'" [animationDelay]="400">
+              </round-progress>
+            </div>
+          </ion-card>
+        </ion-col>
+        <ion-col width-33></ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col id="col-left" col-6 (click)="scanPadlock()">
+          <ion-icon name="ios-lock"></ion-icon>
+          <p style="font-size:11px;color:rgb(156, 151, 146)">SEARCH DEVICE</p>
+        </ion-col>
+        <ion-col id="col-right" col-6 (click)="showChangePin()">
+          <ion-icon name="ios-key"></ion-icon>
+          <P style="font-size:11px;color:rgb(156, 151, 146)">CHANGE KEY</P>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col width-33></ion-col>
+        <ion-col width-33>
+          <button class="unlockBtn" ion-button round outline color="primary" (click)="unlock()">UNLOCK</button>
+        </ion-col>
+        <ion-col width-33></ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-list>
+</ion-content>

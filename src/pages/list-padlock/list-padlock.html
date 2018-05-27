@@ -1,0 +1,33 @@
+<page-alert #alert (alertResult)="alertResult($event)"></page-alert>
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>
+      Padlock
+    </ion-title>
+    <ion-buttons icon-only end>
+      <button ion-button (click)="moreOptions($event)">
+        <ion-icon name="more" style="font-size:28px;"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list *ngIf="devices.length!=0" no-padding>
+    <ion-item-group>
+      <button ion-item *ngFor="let i of devices" (click)="connectPadlock(i)">
+        <ion-avatar item-start class="avatarIcon">
+          <ion-icon name="lock-circle" class="listIcon" color="primary"></ion-icon>
+        </ion-avatar>
+        <h2>{{i.name}}</h2>
+        <p style="font-size:12px;">{{i.uuid}}</p>
+        <ion-icon style="font-size:35px;color:#2673f8;" name="lock-signal" item-end></ion-icon>
+      </button>
+    </ion-item-group>
+  </ion-list>
+
+  <div class="txtCenter" *ngIf="devices.length==0">
+    <ion-icon name="ios-lock" style="font-size:65px;"></ion-icon>
+    <p style="font-size:15px;">No available devices</p>
+  </div>
+</ion-content>

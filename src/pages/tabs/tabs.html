@@ -1,0 +1,21 @@
+<span *ngIf="rootTabs=='dashboardTabs'">
+  <ion-header no-border>
+    <ion-toolbar color="primary">
+      <ion-title>
+        {{title}}
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <super-tabs toolbarColor="light" indicatorColor="light" toolbarBackground="primary">
+      <super-tab *ngFor="let page of dashboardTabs" [root]="page.root" title="{{page.title}}" [rootParams]="page.param"></super-tab>
+    </super-tabs>
+  </ion-content>
+</span>
+
+<ion-content *ngIf="rootTabs=='homeTabs'">
+  <ion-tabs color="light">
+    <ion-tab *ngFor="let page of homeTabs" [root]="page.root" tabTitle="{{page.title}}" tabIcon="{{page.icon}}"></ion-tab>
+  </ion-tabs>
+</ion-content>

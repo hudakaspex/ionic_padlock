@@ -1,0 +1,24 @@
+<page-alert #alert (alertResult)="alertResult($event)"></page-alert>
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Share key</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-list padding>
+    <ion-item>
+      <ion-label>
+        <ion-icon style="font-size:26px;" name="key2"></ion-icon>
+      </ion-label>
+      <ion-input placeholder="Enter your key"></ion-input>
+    </ion-item>
+    <ion-item>
+      <button ion-button outline round block (click)="shareTo()">
+        <ion-icon name="share"></ion-icon>
+        &nbsp;&nbsp;Share to
+      </button>
+    </ion-item>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <div padding>
+      <ion-segment [(ngModel)]="selectedSegment" padding color="light">
+        <ion-segment-button value="signin">
+          <ion-icon name="login" style="font-size:23px;"></ion-icon>
+          &nbsp;&nbsp;Sign in
+        </ion-segment-button>
+        <ion-segment-button value="signup">
+          <ion-icon name="person-add" style="font-size:23px;"></ion-icon>
+          &nbsp;&nbsp;Sign up
+        </ion-segment-button>
+      </ion-segment>
+    </div>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <div [ngSwitch]="selectedSegment">
+    <ion-list *ngSwitchCase="'signin'" style="padding:15% 5% 0 5%;" no-lines>
+      <div *ngFor="let i of forms['formSignin']" [formGroup]="formSignin">
+        <ion-item style="padding-top:8%;">
+          <ion-label>
+            <ion-icon [name]="i.icon" style="font-size:25px;"></ion-icon>
+          </ion-label>
+          <ion-input [placeholder]="i.name" reverse="false" [type]="i.type" [formControlName]="i.name"></ion-input>
+        </ion-item>
+      </div>
+      <p style="text-align:right; color:rgb(163, 160, 160)">Forgot password ?</p>
+      <div style="padding-top:12%;">
+        <button ion-button block round (click)="signin(formSignin)" [disabled]="formSignin.invalid">SIGN IN</button>
+      </div>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'signup'" style="padding:8% 5% 0 5%;">
+      <div *ngFor="let i of forms['formSignup']" [formGroup]="formSignup">
+        <ion-item style="padding-top:8%;">
+          <ion-label>
+            <ion-icon [name]="i.icon" style="font-size:25px;"></ion-icon>
+          </ion-label>
+          <ion-input [placeholder]="i.name" [type]="i.type" [formControlName]="i.name"></ion-input>
+        </ion-item>
+        <div class="errMessage">
+          <small *ngIf="formSignup.get(i.name).hasError('required') && (formSignup.controls[i.name].touched || formSignup.controls[i.name].dirty)">*{{i.name}} is required</small>
+          <small *ngIf="formSignup.get(i.name).hasError('email') && !formSignup.get(i.name).hasError('required') && formSignup.controls[i.name].touched">*Enter a valid email</small>
+          <small *ngIf="formSignup.get(i.name).hasError('equalTo') && !formSignup.get(i.name).hasError('required') && formSignup.controls[i.name].touched">*mismatch Password</small>
+        </div>
+      </div>
+      <div style="padding-top:10%;">
+        <button ion-button block round [disabled]="formSignup.invalid" (click)="signup(formSignup)">SIGN UP</button>
+      </div>
+    </ion-list>
+  </div>
+
+</ion-content>

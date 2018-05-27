@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Settings key</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-list>
+    <ion-list-header>
+      Settings
+    </ion-list-header>
+    <button ion-item *ngFor="let i of listSetting" padding (click)="navigateTo(i.page)">
+      <ion-icon [name]="i.icon" item-start color="primary" style="font-size:33px;"></ion-icon>
+      <p style="font-size:16px;color:rgb(48, 46, 46);">{{i.title}}</p>
+    </button>
+  </ion-list>
+</ion-content>
